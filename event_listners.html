@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Event Listeners</title>
+</head>
+<body>
+<h1>Event Listeners & Event Handlers</h1>
+<div class="grandparent">
+    <div class="parent">
+        <div class="child"> </div>
+    </div>
+</div>
+</body>
+<style>
+    .grandparent {
+        background-color: green;
+        height: 300px;
+        width: 300px;
+        display: flex;
+        justify-content: space-evenly;
+    }
+
+    .parent {
+        background-color: red;
+        height: 150px;
+        width: 150px;
+        margin-top: 70px;
+        display: flex;
+        justify-content: space-evenly;
+    }
+    .child {
+        background-color: cornflowerblue;
+        height: 75px;
+        width: 75px;
+        margin-top: 30px;
+    }
+</style>
+
+<script>
+
+let grandparent = document.querySelector(".grandparent")
+let parent = document.querySelector(".parent")
+let child = document.querySelector(".child")
+
+//document
+document.addEventListener("click", () => {
+    console.log("document capture")
+}, {capture: true})
+
+document.addEventListener("click", () => {
+    console.log("document bubble")
+})
+
+//grandparent
+grandparent.addEventListener('click',() => {
+}, {capture: true})
+
+grandparent.addEventListener('click', () => {
+    console.log("grandparent bubble")
+})
+
+
+//parent
+parent.addEventListener('click', ()=> {
+    console.log("parent capture")
+}, {capture: true})
+
+parent.addEventListener('click', ()=> {
+    console.log("parent bubble")
+})
+
+//child
+child.addEventListener("click", () => {
+    console.log("child capture")
+}, {capture: true})
+
+child.addEventListener("click", () => {
+    console.log("child bubble")
+})
+
+
+
+</script>
+</html>
