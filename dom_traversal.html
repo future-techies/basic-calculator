@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Dom Manipulation</title>
+</head>
+<body>
+<h1>DOM Traversal</h1>
+<div class="grandparent" id="grandparent-id">
+    <div class="parent">
+        <div class="child" id="child1">
+        </div>
+        <div class="child" id="child2"></div>
+    </div>
+    <div class="parent">
+        <div class="child">
+        </div>
+        <div class="child"></div>
+    </div>
+</div>
+
+<div class="button-class">
+    <h2>DOM Traversal Events (****Every button action trigger a page reload in 3 sec for DOM Reset)</h2>
+    <button onclick="grantparent()">Grand Parent</button>
+    <button onclick="allparents()">All Parent</button>
+    <button onclick="parent1()">Parent 1</button>
+    <button onclick="parent2()">Parent 2</button>
+    <button onclick="allchilds()">All Child</button>
+    <button onclick="child1()">Child 1</button>
+    <button onclick="child2()">Child 2</button>
+    <button onclick="child3()">Child 3</button>
+    <button onclick="child4()">Child 4</button>
+    <button onclick="nextelement()">Next Element</button>
+    <button onclick="previouselement()">Previous Element</button>
+</div>
+
+
+
+</body>
+<style>
+    .grandparent {
+        width: 400px;
+        height: 400px;
+        border: 3px solid black;
+        background-color: #ccb248;
+    }
+
+    .parent {
+        border: 3px solid black;
+        display: flex;
+        justify-content: space-evenly;
+        margin: 40px;
+        background-color: aquamarine;
+    }
+
+    .child {
+        width: 50px;
+        height: 50px;
+        margin: 30px;
+        border: 3px solid black;
+        background-color: chocolate;
+    }
+
+    .button-class {
+        margin-top: 30px;
+    }
+</style>
+
+<script>
+
+    function grantparent() {
+        refresh_page()
+
+        let grantparent = document.getElementById("grandparent-id")
+
+        changeBackgroundColor(grantparent)
+    }
+
+    function allparents() {
+        refresh_page()
+
+        let parents = document.getElementsByClassName("parent")
+        parents = Array.from(parents)
+
+        parents.forEach(changeBackgroundColor)
+    }
+
+    function parent1() {
+        refresh_page()
+
+        let parent1 = document.querySelectorAll('.parent')
+
+        changeBackgroundColor(parent1[0])
+    }
+
+    function parent2() {
+        refresh_page()
+
+        let parent1 = document.querySelectorAll('.parent')
+
+        changeBackgroundColor(parent1[1])
+    }
+
+    function allchilds(){
+        refresh_page()
+
+        let child = document.querySelectorAll(".child")
+        child =  Array.from(child)
+
+        child.forEach(changeBackgroundColor)
+    }
+
+    function child1() {
+        refresh_page()
+
+        let child = document.querySelector(".child")
+
+        changeBackgroundColor(child)
+    }
+
+    function child2() {
+        refresh_page()
+
+        let child = document.querySelectorAll(".child")
+
+        changeBackgroundColor(child[1])
+    }
+    function child3() {
+        refresh_page()
+
+        let child = document.querySelectorAll(".child")
+
+        changeBackgroundColor(child[2])
+    }
+
+    function child4() {
+        refresh_page()
+
+        let child = document.querySelectorAll(".child")
+
+        changeBackgroundColor(child[3])
+    }
+
+    function nextelement() {
+        refresh_page()
+
+        let child1 = document.querySelector("#child1")
+        let child2 = child1.nextElementSibling
+
+        changeBackgroundColor(child2)
+    }
+
+    function previouselement(){
+        refresh_page()
+
+        let child2 = document.getElementById("child2")
+        let child1 = child2.previousElementSibling
+
+        changeBackgroundColor(child1)
+    }
+
+    function changeBackgroundColor(element) {
+        element.style.backgroundColor = 'grey'
+    }
+
+    function refresh_page() {
+        setTimeout(() => {
+            location.reload()
+        }, 2000)
+
+    }
+
+</script>
+</html>
